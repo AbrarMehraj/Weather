@@ -16,8 +16,9 @@ const CurrentWeather = (props) => {
       <div className="w-wrapper">
          <div className="w-header">
             <h2 className="w-location"><i className="tiny location arrow icon"></i> {props.location}</h2>
-            <img alt="Failed to Fetch the image" className= "w-icon" src={props.icon} />
+            <img  alt='Loading error' src={props.icon} className= "w-icon" />
             <h3 className = "w-desc">{props.des}</h3>
+            <h2 className = "w-temp">{k2C(props.temp)} °C</h2>
             <div className="temp">
                <div className = "temp-min"><i className="long arrow alternate up icon"></i> {k2C(props.maxTemp)} °C</div>
                <div className = "temp-max"><i className="long arrow alternate down icon"></i> {k2C(props.minTemp)} °C</div>

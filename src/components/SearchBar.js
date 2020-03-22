@@ -8,7 +8,7 @@ class SearchBar extends React.Component{
 
     onFormSubmit = (event) =>{
       event.preventDefault();
-
+      
       this.props.onSubmit(this.state.input);
       
    };
@@ -24,7 +24,9 @@ class SearchBar extends React.Component{
                   placeholder="Search Location"
                   value={this.state.input} 
                   onChange={e=> this.setState({input: e.target.value})}
+                  
                    />
+                  
             </form>
             <div className="title">K-Weather</div>
         </div>
