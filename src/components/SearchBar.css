@@ -5,8 +5,6 @@
 }
 
 body{
-  /* background-image: linear-gradient(to right, rgb(71, 71, 221) , rgb(43, 219, 43) ,rgb(238, 80, 23));
-  */
   font-family: serif;
   background-color: lightseagreen;
 }
@@ -42,30 +40,31 @@ body{
    }
 .search__input {
   font-family: inherit;
-  font-size: inherit;
   color: inherit;
   background-color: var(--color-grey-light-2);
   border: none;
-  padding: .6rem 2rem;
+  font-size: 1.3rem;
+  padding: .5rem 2rem;
   border-radius: 10rem;
   width: 90%;
   transition: all .3s;
 }
 .search__input:focus {
   outline: none;
-  width: 100%;
+  width: 124%;
   background-color: var(--color-grey-light-3); }
 .search__input::-webkit-input-placeholder {
   font-weight: 400;
-  color: rgb(20, 20, 20);
+  color: rgb(82, 79, 79);
  }
  
 .search__button {
   border: none;
   background-color: var(--color-grey-light-2); 
+  font-size: 1.2rem;
   position: absolute;
-  left: .5rem;
-  top: .67rem;
+  left: .35rem;
+  top: .6rem;
   color: rgb(43, 31, 31);
 }
 

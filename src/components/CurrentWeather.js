@@ -9,11 +9,14 @@ const CurrentWeather = (props) => {
       if(temp != null){ 
          return Math.round(temp - 272.3);
       }
-   }
-   
+   };
+
+  
+  
    
    return(
       <div className="w-wrapper">
+      
          <div className="w-header">
             <h2 className="w-location"><i className="tiny location arrow icon"></i> {props.location}</h2>
             <img  alt='Loading error' src={props.icon} className= "w-icon" />

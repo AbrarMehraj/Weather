@@ -1,9 +1,9 @@
+
 import React from 'react';
 import axios from 'axios';
 import SearchBar from './SearchBar';
 import CurrentWeather from './CurrentWeather';
 import Spinner from './Spinner';
-import Faker from 'faker';
 
 
 class App extends React.Component{
@@ -20,7 +20,8 @@ class App extends React.Component{
       pressure: null,
       humidity: null,
       speed: null,
-      errMessage : ''
+      errMessage : '',
+      condition: null
    };
 
 
@@ -29,8 +30,16 @@ class App extends React.Component{
       const apiKey = 'ee562214bd7a53e65252f59d99738075';
       const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=${apiKey}`);
       
-      console.log(response.data);
+      // console.log(response.data);
       this.addToState(response.data);
+
+      if(input){
+        return  (
+         <div> 
+            <Spinner message='pakaan' />
+         </div>
+        );
+      }
      
    }
 
@@ -67,6 +76,7 @@ class App extends React.Component{
         position =>{
 
          this.setState({
+            condition: 1,
             lat : position.coords.latitude,
             lon : position.coords.longitude
          });
@@ -92,11 +102,17 @@ class App extends React.Component{
          );   
       }
 
-   
-      if(this.state.location !== ''){
-         var iconCode = this.state.icon;
+      if(this.state.condition === 1 && !this.state.location){
+        return <Spinner message = 'Fetching data...' />
+      }
+
+
+     
+
+      if(this.state.location !== ''){   
          return (
             <CurrentWeather 
+            style={{ maxWidth:'700px', margin:'auto', position: 'relative'}}
             location ={this.state.location}
             icon = {`http://openweathermap.org/img/wn/${this.state.icon}@2x.png`}
             temp = {this.state.temp}
@@ -106,6 +122,7 @@ class App extends React.Component{
             pressure = {this.state.pressure}
             humidity = {this.state.humidity}
             speed = {this.state.speed} />
+
          )
       }
       
@@ -113,11 +130,42 @@ class App extends React.Component{
    };
 
 
+   // button methods
+  
+   // CTF = () => {
+   //    // return(
+       
+   //    // );
+   // }
+
+   // CTC = () => {
+   //    const UpdatedTemp = Math.round(
+   //       this.state.temp - 272.3,
+   //       this.state.minTemp - 272.3);
+   //    this.setState({temp: UpdatedTemp, minTemp: UpdatedTemp})
+
+   // }
+
+
+
+   // buttons(){
+   //    return (
+   //       <div >
+   //          <button className="btn fahren" onClick={this.CTF} >F</button>
+   //          <button className="btn celcius" onClick={this.CTC} >C</button>
+   //       </div>
+   //    )
+   // }
+
+
+
    render(){
       return (
-         <div style={{ maxWidth:'700px', margin:'auto'}}>
+         <div style={{ maxWidth:'700px',
+             margin:'auto'}}>
             <SearchBar onSubmit={this.onSearchSubmit} />
             {this.renderContent()}
+            {/* {this.buttons()} */}
          </div>
       );
    }

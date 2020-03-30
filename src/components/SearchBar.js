@@ -10,7 +10,7 @@ class SearchBar extends React.Component{
       event.preventDefault();
       
       this.props.onSubmit(this.state.input);
-      
+      this.setState({input: ''});
    };
 
    render(){
